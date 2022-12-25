@@ -33,6 +33,33 @@ aria-label="Toggel navigation">
                     
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nar ms-auto">
+                            
+                            @guest
+                                <li><a class="nav-link" href="{{ route('login') }}">{{
+__('messages.login') }}</a></li>
+
+                            @else
+                                <li class="nav-link dropdown-toggle" href="#"
+id="navbarDropdown" role="button" data-bs-toggle="dropdown" ariq-expanded="false">
+                                    {{ Auth::user()->name }} <span class="caret"></span>   
+                                    </a>
+                                    
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefalt()"
+                                                    document.getElementById('logout-
+form').submit();">
+                                        {{ __('messages.logout') }}
+                                        </a>
+                                        
+                                        <form id="logout-form" action="{{ route('logout') }}"
+method="POST" style="display: none;">
+
+                                            @csrf
+                                        </form>    
+                                    </div>
+                                </li>
+                                @endguest
                         </ul>
                     </div>
                 </div>
