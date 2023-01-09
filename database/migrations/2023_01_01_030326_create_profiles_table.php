@@ -11,8 +11,10 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('body');
+            $table->string('name');
+            $table->string('gender');
+            $table->string('hobby');
+            $table->string('introduction');
             $table->timestamps();
         });
     }

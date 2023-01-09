@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<htmi lang="{{ app()->getLocale() }}">
+<html lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -61,9 +61,9 @@ aria-label="Toggel navigation">
                 </div>
             </nav>
             
-            <mian class="py-4">
+            <main class="py-4">
                 @yield('content')
-            </mian>
+            </main>
         </div>
     </body>
-</htmi>
+</html>
