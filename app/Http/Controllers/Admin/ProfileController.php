@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 
 use App\Models\Profile;
 
+use App\Models\Fix;
+use Carbon\Carbon;
+
 class ProfileController extends Controller
 {
-    
     public function add()
     {
         return view('admin.profile.create');
@@ -40,7 +42,7 @@ class ProfileController extends Controller
         return view('admin.profile.edit', ['profile_form' => $profile]);
     }
 
-    public function update()
+    public function update(Request $request)
     {
         $this->validate($request,Profile::$rules);
         
@@ -51,7 +53,11 @@ class ProfileController extends Controller
         
         $profile->fill($profile_form)->save();
         
-        return redirect('admin/profile/edit');
+        $fix = new Fix();
+        $fix->profile_id = $profile->id;
+        $fix->edited_at = Carbon::now();
+        $fix->save();
+        
+        return redirect('admin/profile/edit?id=' . $profile->id);
     }
-    
 }
