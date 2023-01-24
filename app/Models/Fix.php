@@ -15,4 +15,5 @@ class Fix extends Model
         'profile_id' => 'required',
         'edited_at' => 'required',
     );
+    
 }
